@@ -1,0 +1,35 @@
+@font-face {
+	font-family: Roboto-Medium ;
+	src: url(../roboto/Roboto-Medium.ttf);
+}
+
+@font-face {
+	font-family: Roboto-Regular ;
+	src: url(../roboto/Roboto-Regular.ttf);
+  }
+p{
+	margin: 10px;
+}
+
+button{
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 10px;
+	font-family: Roboto-Regular ;
+}
+
+body{
+font-family: Roboto-Medium ;
+}
+
+.menu-div{
+	width: fit-content;
+	height: 20%;
+	border: 2px;
+	border-color: aqua;
+	background-color: blueviolet;
+	font-family: Roboto-Regular ;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
