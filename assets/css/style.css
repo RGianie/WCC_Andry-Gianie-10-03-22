@@ -35,6 +35,8 @@ body {
   color: rgba(0, 0, 0, 0.727);
   background-image: url("../../maquette/bg.png");
   background-size: cover;
+  background-repeat: no-repeat;
+  min-width: 1120px;
 }
 a {
   color: #eea916;
