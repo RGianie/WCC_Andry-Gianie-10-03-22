@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="./assets/css/style.css" 
-
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Dribble</title>
+        <link rel="stylesheet" href="./assets/css/style.css" >
+        <link rel="stylesheet" href="./assets/css/fontawesome-all.min.css">
     </head>
-  <body>  
-    <header>
-        Wingle
-    </header>
-    
+  <body> 
         <main >
+          <header>Wingle</header>
+
             <div class="menu-div">
-                <p> Popular</p>
+                <a href=""><button class="butt2"> Popular</button></a>
                 <a href=""><button> Recommended</button></a>
-                <p>Extreme</p>
+                <a href=""><button class="butt2"> Extreme</button></a>
             </div>
             <div class="div-photo">
                 <img class="photo" src="./maquette/cabane.JPG" alt="cabane">
@@ -39,10 +37,122 @@
                 </span>
             </div>
             
-        </main>
-        <aside>
 
+        </main>
+        <aside class="aside">
+          <div class="aside--user">
+            <img src="./maquette/woman.JPG" alt="User image" class="img-rounded">
+            <p class="aside--edit">edit</p>
+            <h1>Helena Brauer</h1>
+            <h4>Manager</h4>
+            <p class="text-gray">helena@brauer.com</p>
+          </div>
+
+         <div class="aside--all-offers">
+            <template id="template--aside-offer">
+              <div class="aside-offer">
+                <img class="aside-offer--illustration img-md" src="----" alt="">
+                <p>
+                  <span class="aside--hours">---</span> hours <br> <span class="aside--title">---</span>
+                </p>
+              <div class="imgs">
+                <!-- img-group goes here -->
+              </div>
+              <img class="aside--ellipsis" src="./maquette/ellipsis-vertical-solid.svg" alt="">
+            </div>
+            </template>
+
+            <template id="template--image-group">
+              <div class="img-group">
+                <div class="img-group--overlay">
+                  <img class="img-rounded img-sm" src="---" alt="">
+                </div>
+              </div>
+            </template>
+         </div>
+
+         <div class="aside--footer">
+          <p>Greeenwich Street New York</p>
+          <div>
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-linkedin"></i>
+            <i class="fab fa-twitter"></i>
+          </div>
+         </div>
         </aside>
         
+        <script src="./assets/js/jquery-3.6.0.js"></script>
+        <script>
+          $(document).ready(() => {
+            setupAllOffers()
+
+            $(".img-group").hover(function() {
+                $(this)
+                  .siblings(".img-group")
+                  .addClass("img-group-not-hovered")
+                $(this).removeClass("img-group-not-hovered")
+            }, function() {
+                $(".img-group").removeClass("img-group-not-hovered")
+            })            
+          })
+
+          function setupAllOffers() {
+              const asideOfferContents = [
+                {
+                  illustration:"./maquette/img-1.png",
+                  hour: 36,
+                  title: "Snorkeling",
+                  peopleImgs: [
+                    "./maquette/person-1.JPG",
+                    "./maquette/person-4.JPG",
+                    "./maquette/person-2.JPG",
+                  ]
+                },
+                {
+                  illustration:"./maquette/img-2.png",
+                  hour: 64,
+                  title: "Hiking",
+                  peopleImgs: [
+                    "./maquette/person-2.JPG",
+                    "./maquette/person-3.JPG",
+                  ]
+                },
+                {
+                  illustration:"./maquette/img-3.png",
+                  hour: 42,
+                  title: "Kayaking",
+                  peopleImgs: [
+                    "./maquette/person-4.JPG",
+                    "./maquette/person-2.JPG",
+                    "./maquette/person-3.JPG",
+                    "./maquette/person-1.JPG",
+                  ]
+                }
+              ]
+
+            for(let offerContent of asideOfferContents) {
+              const offerElt = getAsideOfferElement()
+              $(".aside--all-offers").append(offerElt)
+              $(".aside-offer:last-child .aside-offer--illustration").attr("src", offerContent.illustration)
+              $(".aside-offer:last-child .aside--hours").text(offerContent.hour)
+              $(".aside-offer:last-child .aside--title").text(offerContent.title)
+
+              offerContent.peopleImgs.forEach(img => {
+                const imgGroupElt = getImageGroup()
+                $(".aside-offer:last-child .imgs").append(imgGroupElt)
+                $(".aside-offer:last-child .img-group:last-child img").attr("src", img)
+              })
+            }
+          }
+          
+          function getAsideOfferElement() {
+            return $("#template--aside-offer")[0].content.cloneNode(true)
+          }
+
+          function getImageGroup() {
+            return $("#template--image-group")[0].content.cloneNode(true)
+          }
+            
+        </script>
     </body>
 </html>

@@ -13,6 +13,13 @@
 	src: url(../roboto/Roboto-Bold.ttf);
   }
 
+:root {
+	--img-sm-width: 2.5rem;	
+	--img-md-width: 4rem;	
+	--img-lg-width: 6rem;	
+}
+
+
 p{
 	margin-top: 30px;
 	font-size: 15px;
@@ -44,10 +51,16 @@ button{
 	border: none;
 }
 
+.butt2{
+	background-color: white;
+}
+
 body{
-font-family: Roboto-Medium ;
-margin-left: 60px;
-margin-top: 50px;
+
+	font-family: Roboto-Medium ;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 2rem;
 }
 header{
 	font-size:x-large;
@@ -62,8 +75,8 @@ header{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	margin-top: 60px;
-	margin-bottom: 50px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 
 }
 
@@ -119,5 +132,130 @@ header{
 	margin-bottom: 50px;
 	width: 120px;
 	height: 120px;
+}
+
+.text-gray {
+	color: #797979;
+}
+
+.img-rounded {
+	border-radius: 50%;
+	display: inline-block;
+	width: var(--img-md-width);
+	height: var(--img-md-width);
+	object-fit: cover;
+	object-position: center;
+}
+.img-md {
+	width: var(--img-md-width);
+	height: var(--img-md-width);
+}
+.img-sm {
+	width: var(--img-sm-width);
+	height: var(--img-sm-width);
+	transition: all ease .3s;
+}
+
+.aside {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.aside--user {
+	text-align: center;
+	width: max-content;
+	margin-bottom: 7rem;
+}
+.aside--user * {
+	font-weight: normal;
+	line-height: .9em;
+}
+
+.aside--edit {
+	color: blueviolet;
+	margin-bottom: 3rem;
+}
+
+.aside--ellipsis {
+	height: 1.5rem;
+	justify-self: flex-end;
+	padding: 0 1.5rem;
+}
+
+.aside--all-offers {
+	width: 70%;
+}
+.aside-offer{
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+.aside--hours {
+	font-weight: 500;
+	font-size: 1.2rem;
+}
+.imgs  {
+	display: flex;
+	align-items: center;
+	height: 5rem;
+	margin-left:auto;
+}
+
+.img-group {
+	transition: all ease 0.3s;
+	max-width: calc(var(--img-sm-width) / 2);
+	position: relative;
+}
+.img-group:hover {
+	max-width: var(--img-md-width);
+	z-index: 1;
+}
+.img-group img {
+	display: block;
+}
+.img-group:hover img {
+	width: var(--img-md-width);
+	height: var(--img-md-width);
+}
+.img-group:hover img {
+	width: var(--img-md-width);
+	height: var(--img-md-width);
+}	
+
+.img-group--overlay {
+	width: max-content;
+	position: relative;
+	border: 2px solid #fff;
+	border-radius: 50%;
+}
+.img-group--overlay::after{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(255, 255, 255, 0.532);
+	border-radius: 50%;
+	transition: all ease .3s .2s;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+}
+.img-group-not-hovered div::after {
+	opacity: 1;
+}
+
+.aside--footer {
+	color: rgb(156, 156, 156);
+	margin-top: 4rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 3rem;
+	padding: 0 .5rem;
+}
+
+.aside--footer  i {
+	margin: 0 .5rem;
 }
 
